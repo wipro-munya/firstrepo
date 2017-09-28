@@ -17,7 +17,6 @@ private String	Customer_PostCode;
 private String Customer_PhoneNumber;
 
 CustomerClass() {
-	// TODO Auto-generated constructor stub
 	Customer_ID = 1234;
 	Customer_FirstName = "john";
 	Customer_LastName = "Doe";
@@ -204,7 +203,7 @@ public void updateCustomerDetails(int id){
 	}
 }
 
-public void getCustomerbyID(int id){
+public void getCustomerDetails(int id){
 	
 	//Establish Connection
 	Connection con = null;
@@ -227,7 +226,7 @@ public void getCustomerbyID(int id){
 				System.out.println("Enter ID to search");
 				 id=scan.nextInt();
 				
-				String sql="select * from customer where First="+id;
+				String sql="select * from customer where ID="+id;
 				System.out.println(sql);
 				ResultSet rs=st.executeQuery(sql);
 				boolean flag=false;
@@ -249,6 +248,48 @@ public void getCustomerbyID(int id){
 	
 }
 
-
+public void getCustomerDetails(String firstName){
+	
+	//Establish Connection
+	Connection con = null;
+	String url="jdbc:oracle:thin:@localhost:1521:orcl1";
+	String uname="scott";
+	String pwd="tiger";
+			try {
+				con=DriverManager.getConnection(url,uname,pwd);
+				System.out.println("Connected");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				//System.out.println(e.getMessage());
+			}
+			
+			//Create a Statement Object
+			try {
+				Statement st=con.createStatement();
+				Scanner scan=new Scanner(System.in);
+				System.out.println("Enter name to search");
+				 firstName=scan.nextLine();
+				String sql="select * from customer where FIRST= '"+firstName+"'";
+				ResultSet rs=st.executeQuery(sql);
+				boolean flag=false;
+				while (rs.next())
+				{
+					flag=true;
+					System.out.println("id: "+rs.getString("ID"));
+					System.out.println("First Name: "+rs.getString("First"));
+					System.out.println("Last Name: "+rs.getString("Last"));
+					System.out.println("Address: "+rs.getString("Address"));
+					System.out.println("Phone Number: "+rs.getString("Phone"));
+				}
+				
+				if (!flag)
+				System.out.println("Record not found");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	
+}
 
 }
