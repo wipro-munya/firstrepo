@@ -13,7 +13,6 @@ private int	Customer_ID;
 private String	Customer_FirstName;
 private String	Customer_LastName;	
 private String	Customer_Address1;
-private String	Customer_PostCode;
 private String Customer_PhoneNumber;
 
 CustomerClass() {
@@ -21,10 +20,12 @@ CustomerClass() {
 	Customer_FirstName = "john";
 	Customer_LastName = "Doe";
 	Customer_Address1 = "12 We work";
-	//Customer_PostCode = "EC3 3RT";
 	Customer_PhoneNumber = "00";
 }
-
+/*
+ * initiate customer details 
+ * 
+ * */
 public void getCustomerDetails (){
 	Scanner input = new Scanner(System.in);
 	System.out.println("Please enter Customer First Name");
@@ -35,46 +36,72 @@ public void getCustomerDetails (){
 	
 	System.out.println("Please enter Address ");
 	this.Customer_Address1 = input.nextLine();
-	
-	//System.out.println("Please enter Post Code");
-	//this.Customer_PostCode = input.nextLine();
-	
+
 	System.out.println("Please enter Customer Contact Number");
 	
 	this.Customer_PhoneNumber = input.nextLine();
 
 }
 
+/*
+ * get customer details
+ * */
 public int getCustomer_ID() {
 	return Customer_ID;
 }
+
+/*
+ * set customer details
+ * */
 public void setCustomer_ID(int customer_ID) {
 	Customer_ID = customer_ID;
 }
+
+/*
+ * get customer first name
+ * */
 public String getCustomer_FirstName() {
 	return Customer_FirstName;
 }
+
+/*
+ * set customer first name
+ * */
 public void setCustomer_FirstName(String customer_FirstName) {
 	Customer_FirstName = customer_FirstName;
 }
+
+/*
+ * get customer last name
+ * */
 public String getCustomer_LastName() {
 	return Customer_LastName;
 }
+
+/*
+ * set customer last name
+ * */
 public void setCustomer_LastName(String customer_LastName) {
 	Customer_LastName = customer_LastName;
 }
+
+/*
+ * get customer address
+ * */
 public String getCustomer_Address1() {
 	return Customer_Address1;
 }
+
+/*
+ * set customer address
+ * */
 public void setCustomer_Address1(String customer_Address1) {
 	Customer_Address1 = customer_Address1;
 }
-public String getCustomer_PostCode() {
-	return Customer_PostCode;
-}
-public void setCustomer_PostCode(String customer_PostCode) {
-	Customer_PostCode = customer_PostCode;
-}
+
+/*
+ * get customer details
+ * */
 public String getCustomer_PhoneNumber() {
 	return Customer_PhoneNumber;
 }
@@ -101,7 +128,6 @@ public void addCustomer(int customerID){
 		 preparedStmt.setString(2, this.getCustomer_FirstName());
 		 preparedStmt.setString(3, this.getCustomer_LastName());
 		 preparedStmt.setString(4, this.getCustomer_Address1());
-		 //preparedStmt.setString(5, this.getCustomer_PostCode());
 		 preparedStmt.setString(5, this.getCustomer_PhoneNumber());
 		 
 		// execute the preparedstatement
